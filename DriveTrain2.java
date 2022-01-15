@@ -31,8 +31,8 @@ public class DriveTrain2 extends LinearOpMode {
         carriage = hardwareMap.get(Servo.class, "car");
 
         pulley.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-        //pulley.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-        //pulley.setTargetPosition(0);
+        
+        carriage.setPosition(0.9);
         
         if (pulley.getCurrentPosition() <= -20) {
             linearSlidesNotDown = false;
@@ -89,7 +89,6 @@ public class DriveTrain2 extends LinearOpMode {
             if (gamepad2.x && linearSlidesNotDown) {
                 carriage.setPosition(-1);
                 sleep(500);
-            } else {
                 carriage.setPosition(0.9);
             }
             
@@ -132,7 +131,7 @@ public class DriveTrain2 extends LinearOpMode {
         }
     }
     
-    private void runSlides(double pos, double power){
+    private void runSlides(double pos, double power) {
         double TICKS_PER_MOTOR_REV = 537.6;
        //countable events per revolution for output shaft, THIS NUMBER CHANGES DEPENDING ON THE TYPE OF MOTOR. VISIT SPECIFICATIONS ON THE WEBSITE THE TEAM GOT THE MOTOR FROM.
         double DRIVE_GEAR_REDUCTION = 1.0;
